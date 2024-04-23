@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="screen">
+    <div class="screen__content">
+      <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <input matInput placeholder="Title" formControlName="title" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea
+            matInput
+            placeholder="Description"
+            formControlName="description"
+          ></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Deadline"
+            formControlName="deadline"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Priority" formControlName="priority">
+            <mat-option value="low">Low</mat-option>
+            <mat-option value="medium">Medium</mat-option>
+            <mat-option value="high">High</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Status" formControlName="status">
+            <mat-option value="todo">To Do</mat-option>
+            <mat-option value="in-progress">In Progress</mat-option>
+            <mat-option value="done">Done</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select
+            placeholder="Assignees"
+            formControlName="assignees"
+            multiple
+          >
+            @for (assignee of allAssignees; track $index) {
+            <mat-option [value]="assignee">
+              {{ assignee }}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">
+          Create Task
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

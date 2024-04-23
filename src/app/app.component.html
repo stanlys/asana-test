@@ -1,0 +1,20 @@
+<mat-toolbar class="tollbar">
+  <span
+    routerLink="/"
+    routerLinkActive="router-link-active"
+    style="cursor: pointer"
+    >Asana
+  </span>
+  <span class="example-spacer"></span>
+  @if (userName) {
+  <span> {{ userName }}</span>
+  <button mat-icon-button class="example-icon favorite-icon" (click)="exit()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+  } @else {
+  <button mat-icon-button class="example-icon" routerLink="/login">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  }
+</mat-toolbar>
+<router-outlet></router-outlet>

@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="screen">
+    <div class="screen__content">
+      @if(isLogIn) {
+      <form class="login" [formGroup]="loginForm" (ngSubmit)="submit()">
+        <div class="login__field">
+          <i class="login__icon fas fa-user"></i>
+          <input
+            type="text"
+            class="login__input"
+            placeholder="User name / Email"
+            formControlName="login"
+          />
+        </div>
+        <div class="login__field">
+          <i class="login__icon fas fa-lock"></i>
+          <input
+            type="password"
+            class="login__input"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </div>
+        <app-button title="Log In Now "></app-button>
+      </form>
+      } @else {
+      <form class="login" [formGroup]="registerForm" (ngSubmit)="submit()">
+        <div class="login__field">
+          <i class="login__icon fas fa-user"></i>
+          <input
+            type="text"
+            class="login__input"
+            placeholder="User name / Email"
+            formControlName="login"
+          />
+        </div>
+        <div class="login__field">
+          <i class="login__icon fas fa-lock"></i>
+          <input
+            type="password"
+            class="login__input"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </div>
+
+        <div class="login__field">
+          <i class="login__icon fas fa-lock"></i>
+          <input
+            type="email"
+            class="login__input"
+            placeholder="user@mail.com"
+            formControlName="email"
+          />
+        </div>
+        <app-button title="Register"></app-button>
+      </form>
+      }
+
+      <div class="social-login">
+        <app-button
+          [title]="isLogIn ? 'Register' : 'LogIn'"
+          (onClick)="isLogIn = !isLogIn"
+        ></app-button>
+      </div>
+    </div>
+    <div class="screen__background">
+      <span class="screen__background__shape screen__background__shape4"></span>
+      <span class="screen__background__shape screen__background__shape3"></span>
+      <span class="screen__background__shape screen__background__shape2"></span>
+      <span class="screen__background__shape screen__background__shape1"></span>
+    </div>
+  </div>
+</div>

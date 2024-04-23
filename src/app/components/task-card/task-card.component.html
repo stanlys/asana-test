@@ -1,0 +1,38 @@
+
+<mat-card class="task-card">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon [class]="task.priority"> info </mat-icon
+      >{{ task.title }}</mat-card-title
+    >
+    <mat-card-subtitle>
+      @if(task.status === 'todo') {<mat-icon>stop</mat-icon>} @if(task.status
+      === 'in-progress') {<mat-icon>done</mat-icon>} @if(task.status ==='done')
+      { <mat-icon>done_all</mat-icon>} Deadline:
+      {{ task.deadline | date : "dd.MM.YYYY" }}</mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <section style="display: flex; gap: 2rem">
+      <p>{{ task.description }}</p>
+      <mat-chip-row>
+        <span>Assignees: </span>
+        @for (assignee of task.assignees; track $index) {
+        <mat-chip color="primary" selected="true">{{ assignee }}</mat-chip>
+        }
+      </mat-chip-row>
+    </section>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button
+      mat-icon-button
+      [routerLink]="['/board/edit/', task.id]"
+      routerLinkActive="router-link-active"
+    >
+      <mat-icon> edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="onDeleteTask.emit(task.id)">
+      <mat-icon> delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

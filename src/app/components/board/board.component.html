@@ -1,0 +1,20 @@
+<section class="controls">
+  <div>
+    <span
+      class="add-task"
+      routerLink="/add"
+      routerLinkActive="router-link-active"
+    >
+      Add Task</span
+    >
+  </div>
+  <app-task-filter (doFilter)="doFilter($event)"></app-task-filter>
+  <mat-form-field appearance="fill">
+    <mat-label>Search</mat-label>
+    <input #searchInput matInput placeholder="Search task" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+</section>
+@for (task of tasks; track $index) {
+<app-task-card [task]="task" (onDeleteTask)="onDeleteTask($event)"></app-task-card>
+}
